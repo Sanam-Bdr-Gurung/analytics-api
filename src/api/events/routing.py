@@ -1,7 +1,17 @@
+from math import e
+from .schemas import EventSchema
 from fastapi import APIRouter
 
 router = APIRouter()
 
 @router.get("/")
 def read_events():
-    return {"items": [1,2,3,4]}
+    # a bunch of items in a table
+    return {
+        "results": [1,2,3]
+    }
+
+
+@router.get("/{event_id}")
+def get_event(event_id:int)->EventSchema:
+    return {"id": event_id}
